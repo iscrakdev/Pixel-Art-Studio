@@ -54,6 +54,11 @@ input {
   font-family: 'Courier New', Courier, monospace;
 }
 
+#customColor {
+  height: 30px;
+  width: 30px;
+}
+
 #size > div > input {
   width: 45px;
   font-size: large;
@@ -68,3 +73,4 @@ input {
   font-family: 'Courier New', Courier, monospace;
   font-size: small;
 }
+

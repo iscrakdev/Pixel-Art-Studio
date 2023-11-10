@@ -10,15 +10,16 @@
   <body>
     <div class="container">
       <div class="grid-container" id="size">
-        <div><label for="width">Width&nbsp;</label>
-        <input type="number" name="width" id="width" value="16" />
-        <label for="height">&nbsp;:&nbsp;Height&nbsp;</label>
-        <input type="number" name="height" id="height" value="16" />
-    </div>
-    <div>    
-    <p>Warning: Changing this will wipe your Grid!</p>
-</div>      
-</div>
+        <div>
+          <label for="width">Width&nbsp;</label>
+          <input type="number" name="width" id="width" value="16" />
+          <label for="height">&nbsp;:&nbsp;Height&nbsp;</label>
+          <input type="number" name="height" id="height" value="16" />
+        </div>
+        <div>
+          <p>Warning: Changing this will wipe your Grid!</p>
+        </div>
+      </div>
       <br />
       <div class="grid-container canvas"></div>
       <br />
@@ -28,6 +29,7 @@
         id="generateColorButton"
         value="Generate more Colors!"
       />
+      <input type="color" id="customColor"/>
       <br />
       <div class="grid-container pallete">
         <div

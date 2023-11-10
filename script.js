@@ -92,7 +92,7 @@ function addCanvasListeners() {
   }
 
   for (let item of canvasItems) {
-    item.addEventListener("mouseover", (e) => {
+    item.addEventListener("mouseenter", (e) => {
       if (e.buttons) {
         const div = e.target;
 
@@ -127,6 +127,20 @@ function addButtonListeners() {
   const generateButton = document.querySelector("#generateColorButton");
   generateButton.addEventListener("click", (e) => {
     generateColorPallete();
+  });
+
+  const customColor = document.querySelector("#customColor");
+  customColor.addEventListener("change", (e) => {
+    selectedColor = customColor.value;
+    previousColor.classList.remove("selectedColor");
+    customColor.classList.add("selectedColor");
+    previousColor = customColor;
+  });
+  customColor.addEventListener("click", (e) => {
+    selectedColor = customColor.value;
+    previousColor.classList.remove("selectedColor");
+    customColor.classList.add("selectedColor");
+    previousColor = customColor;
   });
 }
 
