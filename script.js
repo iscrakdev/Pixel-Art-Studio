@@ -11,6 +11,13 @@ function addCanvas() {
   }
 }
 
+function wipeCanvas() {
+    const canvas = document.querySelector(".canvas");
+    for (let box of canvas.children) {
+        box.style.backgroundColor = 'white'
+    }
+  }
+
 function addListeners() {
   const canvasItems = document.querySelector(".canvas").children;
   const palleteItems = document.querySelector(".pallete").children;
@@ -45,6 +52,9 @@ function addListeners() {
       previousColor = div;
     });
   }
+
+  let button = document.querySelector('#resetButton')
+  button.addEventListener('click', e => {wipeCanvas()})
 }
 
 addCanvas();
