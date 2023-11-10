@@ -1,7 +1,7 @@
 let selectedColor = 'red'
 
 function addListeners() {
-    const gridItems = document.querySelectorAll('.grid-item')
+    const gridItems = document.querySelector('.canvas').children
 
     for (let item of gridItems) {
         item.addEventListener('click', e => {
