@@ -12,13 +12,35 @@ const assignRandomColor = function (node) {
   node.style.backgroundColor = "#" + color;
 };
 
+function doesColorExist(color) {
+    const allColorBoxes = document.querySelectorAll('.color')
+    for (let box of allColorBoxes) {
+        if (color === box.style.backgroundColor) {
+            console.log('color exists')
+            return true
+        }
+    }
+    return false
+}
+
+function isColorWhite(color) {
+    if (color.style.backgroundColor === '') {
+        return true
+    }
+    return false
+}
+
 function generateColorPallete() {
   for (let i = 0; i < 13; i++) {
     const pallete = document.querySelector('.pallete')
     const newColorItem = document.createElement('div')
     
     newColorItem.classList.add('grid-item', 'color')
+
     assignRandomColor(newColorItem)
+    while (isColorWhite(newColorItem) || doesColorExist(newColorItem)) {
+        assignRandomColor(newColorItem)
+    }
     
     newColorItem.addEventListener("click", (e) => {
         const div = e.target;
