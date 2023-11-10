@@ -19,6 +19,7 @@ body {
 
 .canvas {
   margin-top: 5px;
+  cursor: url(./cursor.cur) 0 25, auto;
 }
 
 .pallete {
