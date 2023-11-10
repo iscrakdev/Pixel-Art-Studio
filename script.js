@@ -1,6 +1,10 @@
 let selectedColor = "red";
 let previousColor = document.querySelector("#defaultColor");
 
+function generateColorPallete() {
+    
+}
+
 function addCanvas() {
   const canvas = document.querySelector(".canvas");
   for (let i = 0; i < 256; i++) {

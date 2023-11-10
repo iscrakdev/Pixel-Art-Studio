@@ -1,9 +1,9 @@
 body {
-    background-color: rgba(0, 0, 0, 0.35);
+  background-color: rgba(0, 0, 0, 0.35);
 }
 
 .container {
-    text-align: center;
+  text-align: center;
 }
 
 .grid-container {
@@ -14,10 +14,15 @@ body {
   grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
   background-color: #ffffff;
   padding: 10px;
+  margin-bottom: 5px;
+}
+
+.canvas {
   margin-top: 20px;
 }
 
 .pallete {
+  margin-top: 5px;
   grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto;
 }
 
@@ -39,3 +44,6 @@ body {
   border: 3px solid black;
 }
 
+input {
+  font-size: xx-large;
+}
