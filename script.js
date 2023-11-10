@@ -16,11 +16,22 @@ function addListeners() {
   const palleteItems = document.querySelector(".pallete").children;
 
   for (let item of canvasItems) {
-    item.addEventListener("click", (e) => {
-      const div = e.target;
-      div.style.backgroundColor = selectedColor;
+    item.addEventListener("mousedown", (e) => {
+        const div = e.target;
+        div.style.backgroundColor = selectedColor;
     });
   }
+  
+  for (let item of canvasItems) {
+    item.addEventListener("mouseover", (e) => {
+      if (e.buttons) {
+        const div = e.target;
+      
+        div.style.backgroundColor = selectedColor;
+      }
+    });
+  }
+
 
   for (let item of palleteItems) {
     item.addEventListener("click", (e) => {
