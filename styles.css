@@ -11,21 +11,24 @@ body {
   /* \/ temporary \/ */
   border: 1px solid rgba(0, 0, 0, 0.8);
   /* /\ temporary /\ */
-  grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+  grid-template-columns: repeat(16, auto);
   background-color: #ffffff;
   padding: 10px;
   margin-bottom: 5px;
 }
 
 .canvas {
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 .pallete {
   margin-top: 5px;
-  grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto;
+  grid-template-columns: repeat(13, auto);
 }
 
+#size {
+  grid-template-columns: repeat(1, auto);
+}
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
   border: 0.5px solid rgba(0, 0, 0, 0.1);
@@ -48,4 +51,20 @@ body {
 
 input {
   font-size: xx-large;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+#size > div > input {
+  width: 45px;
+  font-size: large;
+}
+
+#size > div > label {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-large;
+}
+
+#size > div > p {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: small;
 }

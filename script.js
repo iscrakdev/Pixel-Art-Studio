@@ -13,58 +13,66 @@ const assignRandomColor = function (node) {
 };
 
 function doesColorExist(color) {
-    const allColorBoxes = document.querySelectorAll('.color')
-    for (let box of allColorBoxes) {
-        if (color === box.style.backgroundColor) {
-            console.log('color exists')
-            return true
-        }
+  const allColorBoxes = document.querySelectorAll(".color");
+  for (let box of allColorBoxes) {
+    if (color === box.style.backgroundColor) {
+      console.log("color exists");
+      return true;
     }
-    return false
+  }
+  return false;
 }
 
 function isColorWhite(color) {
-    if (color.style.backgroundColor === '') {
-        return true
-    }
-    return false
+  if (color.style.backgroundColor === "") {
+    return true;
+  }
+  return false;
 }
 
 function generateColorPallete() {
   for (let i = 0; i < 13; i++) {
-    const pallete = document.querySelector('.pallete')
-    const newColorItem = document.createElement('div')
-    
-    newColorItem.classList.add('grid-item', 'color')
+    const pallete = document.querySelector(".pallete");
+    const newColorItem = document.createElement("div");
 
-    assignRandomColor(newColorItem)
+    newColorItem.classList.add("grid-item", "color");
+
+    assignRandomColor(newColorItem);
     while (isColorWhite(newColorItem) || doesColorExist(newColorItem)) {
-        assignRandomColor(newColorItem)
+      assignRandomColor(newColorItem);
     }
-    
+
     newColorItem.addEventListener("click", (e) => {
-        const div = e.target;
-        selectedColor = div.style.backgroundColor;
-        
-        previousColor.classList.remove("selectedColor");
-        
-        div.classList.add("selectedColor");
-        
-        previousColor = div;
+      const div = e.target;
+      selectedColor = div.style.backgroundColor;
+
+      previousColor.classList.remove("selectedColor");
+
+      div.classList.add("selectedColor");
+
+      previousColor = div;
     });
 
-    pallete.append(newColorItem)
+    pallete.append(newColorItem);
   }
 }
 
-function addCanvas() {
+function addCanvas(x = 16, y = 16) {
   const canvas = document.querySelector(".canvas");
-  for (let i = 0; i < 256; i++) {
+  canvas.style.gridTemplateColumns = `repeat(${x}, auto)`;
+
+  for (let i = canvas.children.length - 1; i >= 0; i--) {
+    canvas.removeChild(canvas.children[i]);
+  }
+
+  for (let i = 0; i < x * y; i++) {
     let div = document.createElement("div");
     div.classList.add("grid-item");
     div.style.backgroundColor = "white";
     canvas.append(div);
   }
+
+  addCanvasListeners();
 }
 
 function wipeCanvas() {
@@ -74,10 +82,8 @@ function wipeCanvas() {
   }
 }
 
-function addListeners() {
+function addCanvasListeners() {
   const canvasItems = document.querySelector(".canvas").children;
-  const palleteItems = document.querySelector(".pallete").children;
-
   for (let item of canvasItems) {
     item.addEventListener("mousedown", (e) => {
       const div = e.target;
@@ -94,7 +100,10 @@ function addListeners() {
       }
     });
   }
+}
 
+function addPalleteListeners() {
+  const palleteItems = document.querySelector(".pallete").children;
   for (let item of palleteItems) {
     item.addEventListener("click", (e) => {
       const div = e.target;
@@ -107,16 +116,34 @@ function addListeners() {
       previousColor = div;
     });
   }
+}
 
+function addButtonListeners() {
   const resetButton = document.querySelector("#resetButton");
-  const generateButton = document.querySelector("#generateColorButton");
-  
   resetButton.addEventListener("click", (e) => {
     wipeCanvas();
   });
+
+  const generateButton = document.querySelector("#generateColorButton");
   generateButton.addEventListener("click", (e) => {
     generateColorPallete();
   });
+}
+
+function addSizeListeners() {
+  const sizeInputs = document.querySelectorAll("#size > div > input");
+  for (let input of sizeInputs) {
+    input.addEventListener("change", (e) => {
+      addCanvas(sizeInputs[0].value, sizeInputs[1].value);
+    });
+  }
+}
+
+function addListeners() {
+  addCanvasListeners();
+  addPalleteListeners();
+  addButtonListeners();
+  addSizeListeners();
 }
 
 addCanvas();
